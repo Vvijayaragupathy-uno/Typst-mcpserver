@@ -12,8 +12,18 @@ mcp = FastMCP("Typst Developer Server")
 def get_typst_command() -> str:
     return shutil.which("typst") or "typst"
 
-# Template directory
+# Template directory and metadata
 TEMPLATE_DIR = pathlib.Path(__file__).parent / "templates"
+
+TEMPLATE_DESCRIPTIONS = {
+    "cv": "Professional curriculum vitae (CV) with structured sections for Education, Experience, and Skills.",
+    "data_report": "Automated analytical report featuring dynamic CSV data loading and table generation.",
+    "paper": "Academic or technical paper template with abstract, multiple authors, and single/dual column support.",
+    "poster": "Visual conference or scientific poster template for high-impact research presentation.",
+    "presentation": "Professional slide deck template using the Polylux package for interactive presentations.",
+    "report": "Standard technical or business report template for structured documentation.",
+    "resume": "Modern and concise one-page resume template for clear professional highlights."
+}
 
 @mcp.prompt()
 def typst_assistant_instructions() -> str:
@@ -43,6 +53,12 @@ WORKFLOW:
 5. Use `add_package_import` if you need external capabilities like charts or slides.
 6. Always `compile_document` after changes to verify correctness.
 7. Use `query_metadata` to check for specific document properties if needed.
+
+DOCUMENT TYPES:
+- **CV/Resume**: Use `cv` or `resume` for professional profiles.
+- **Academic**: Use `paper` for articles or `poster` for conferences.
+- **Business**: Use `report` for documentation or `data_report` for data-heavy analysis.
+- **Slides**: Use `presentation` for meetings and talks.
 
 GUIDES:
 - `guides/typst_guide.md`: Quick reference for Typst syntax (markup, math, scripting).
@@ -129,11 +145,19 @@ def list_fonts() -> str:
     return f"Error listing fonts:\n{result.stderr}"
 
 @mcp.tool()
-def list_templates() -> List[str]:
-    """List available document templates."""
+def list_templates() -> List[Dict[str, str]]:
+    """List available document templates with their descriptions."""
     if not TEMPLATE_DIR.exists():
         return []
-    return [f.stem for f in TEMPLATE_DIR.glob("*.typ")]
+    
+    templates = []
+    for f in TEMPLATE_DIR.glob("*.typ"):
+        name = f.stem
+        templates.append({
+            "name": name,
+            "description": TEMPLATE_DESCRIPTIONS.get(name, "A Typst document template.")
+        })
+    return templates
 
 @mcp.tool()
 def get_template(name: str) -> str:
