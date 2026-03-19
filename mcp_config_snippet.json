@@ -1,12 +1,18 @@
 {
   "mcpServers": {
-    "typst": {
+    "typst-docker": {
       "command": "docker",
       "args": [
         "run",
         "--rm",
         "-i",
-        "ghcr.io/vvijayaragupathy-uno/typst-mcpserver:latest"
+        "ghcr.io/vvijayaragupathy-uno/typst-mcpserver:main"
+      ]
+    },
+    "typst-local": {
+      "command": "python3",
+      "args": [
+        "/Users/vijay/AI projects/300 day challenges /day 3/server.py"
       ]
     }
   }
