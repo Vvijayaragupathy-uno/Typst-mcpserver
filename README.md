@@ -2,6 +2,19 @@
 
 A professional Model Context Protocol (MCP) server that brings **Typst's** high-quality document typesetting to your AI workflows.
 
+---
+
+## 🧐 The Problem
+Creating academic posters requires LaTeX or design tools. Both are complex, slow, and hard to iterate on.
+
+## 💡 The Solution
+Talk to Claude in plain English:
+*"Create a poster about AI in manufacturing with Introduction, Methods, Results sections."*
+
+Claude uses this MCP server to generate, edit, and compile a professional PDF poster automatically.
+
+---
+
 ## ✨ Features
 
 - **Professional Templates**: Create CVs, Papers, Posters, and Reports instantly.
@@ -67,6 +80,21 @@ If you prefer to run the server locally:
    ```bash
    python3 server.py
    ```
+
+---
+
+## 🚀 Impact & Career Value
+
+### How to Add to Your Resume
+Do not just list it as a GitHub link. Frame it as a technical achievement:
+> "Built open-source MCP server enabling Claude AI to generate academic PDF posters through natural language. Implemented FastMCP tools for dynamic poster generation, section editing, and Typst compilation. Deployed via Docker on GitHub Container Registry."
+
+### Why this project stands out:
+1. **MCP is Cutting Edge**: Most engineers have never built one.
+2. **Full Stack Architecture**: You built the server, client, and agent layers.
+3. **Professional DevOps**: Uses Docker + GitHub Actions + GHCR.
+4. **Real Output**: Generates actual PDF posters, not just "Hello World."
+5. **Immediately Usable**: Works with Claude Desktop out of the box.
 
 ---
 
