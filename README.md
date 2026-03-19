@@ -13,8 +13,9 @@ A professional Model Context Protocol (MCP) server that brings **Typst's** high-
 
 ## 🎨 Showcase: AI Benefits Poster
 
-The following poster was generated using this server:
+The following assets were generated and used for the academic poster:
 
+![AI Art for Poster](assets/ai_art_for_poster.png)
 ![AI Benefits Poster](assets/ai_benefits_poster.png)
 
 ---
