@@ -33,3 +33,4 @@ test_*.svg
 # OS
 .DS_Store
 Thumbs.db
+.env
