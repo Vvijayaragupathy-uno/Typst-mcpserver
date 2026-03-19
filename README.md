@@ -18,6 +18,9 @@ The following assets were generated and used for the academic poster:
 ![AI Art for Poster](assets/ai_art_for_poster.png)
 ![AI Benefits Poster](assets/ai_benefits_poster.png)
 
+### 🎬 Demo: Typst in Action
+![Typst Demo Video](assets/tyspt_demo.mov)
+
 ---
 
 ## 🚀 Quick Start (Docker)
@@ -35,7 +38,7 @@ Add this snippet to your `mcp_config.json` (for Claude Desktop or VS Code):
       "command": "docker",
       "args": [
         "run", "--rm", "-i",
-        "ghcr.io/vvijayaragupathy-uno/typst-mcpserver:latest"
+        "ghcr.io/vvijayaragupathy-uno/typst-mcpserver:main"
       ]
     }
   }
