@@ -81,21 +81,5 @@ If you prefer to run the server locally:
    python3 server.py
    ```
 
----
-
-## 🚀 Impact & Career Value
-
-### How to Add to Your Resume
-Do not just list it as a GitHub link. Frame it as a technical achievement:
-> "Built open-source MCP server enabling Claude AI to generate academic PDF posters through natural language. Implemented FastMCP tools for dynamic poster generation, section editing, and Typst compilation. Deployed via Docker on GitHub Container Registry."
-
-### Why this project stands out:
-1. **MCP is Cutting Edge**: Most engineers have never built one.
-2. **Full Stack Architecture**: You built the server, client, and agent layers.
-3. **Professional DevOps**: Uses Docker + GitHub Actions + GHCR.
-4. **Real Output**: Generates actual PDF posters, not just "Hello World."
-5. **Immediately Usable**: Works with Claude Desktop out of the box.
-
----
 
 ⚖️ **License**: MIT
