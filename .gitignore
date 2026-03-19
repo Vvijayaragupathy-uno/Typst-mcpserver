@@ -20,6 +20,10 @@ test_*.pdf
 test_*.png
 test_*.svg
 
+# Assets
+!assets/
+!assets/**
+
 # IDEs
 .vscode/
 .idea/
