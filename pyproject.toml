@@ -1,0 +1,21 @@
+[project]
+name = "typst-mcp-server"
+version = "0.1.0"
+description = "A Typst MCP server for document compilation and management"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "mcp>=0.1.0",
+    "google-genai>=0.1.0",
+    "python-dotenv>=1.0.0",
+    "pydantic>=2.0.0",
+]
+
+[project.scripts]
+server = "server:main"
+agent = "agent:main"
+client = "client:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
