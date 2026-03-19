@@ -4,7 +4,7 @@ FROM python:3.11-slim
 # Install Typst
 # We download the latest release from GitHub
 RUN apt-get update && apt-get install -y curl xz-utils && \
-    curl -L https://github.com/typst/typst/releases/latest/download/typst-x86_64-unknown-linux-musl.tar.xz | tar -xJ --strip-components=1 -C /usr/local/bin typst/typst && \
+    curl -L https://github.com/typst/typst/releases/latest/download/typst-x86_64-unknown-linux-musl.tar.xz | tar -xJ --strip-components=1 -C /usr/local/bin typst-x86_64-unknown-linux-musl/typst && \
     apt-get remove -y curl xz-utils && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/*
