@@ -19,8 +19,8 @@ Claude uses this MCP server to generate, edit, and compile a professional PDF po
 
 - **Professional Templates**: Create CVs, Papers, Posters, and Reports instantly.
 - **High-Quality Rendering**: Compile `.typ` files into PDF, PNG, or SVG.
-- **Asset Management**: Automatic organization of generated documents.
-- **Remote Ready**: Built-in support for Docker and GitHub Container Registry.
+- **Volume Map Support**: Work directly with your local files through Docker.
+- **Remote Ready**: Support for Docker and GitHub Container Registry (GHCR).
 
 ---
 
@@ -36,13 +36,12 @@ The following assets were generated and used for the academic poster:
 
 ---
 
-## 🚀 Quick Start (Docker)
+## 🚀 Getting Started (Docker)
 
-The fastest way to use this server is via Docker. No local installation of Typst is required.
+The fastest and most stable way to use this server is via Docker. No local installation of Typst is required.
 
-### MCP Configuration
-
-Add this snippet to your `mcp_config.json` (for Claude Desktop or VS Code):
+### 1. Configure MCP
+Add this snippet to your `mcp_config.json` (Claude Desktop, IDEs, or other MCP Clients):
 
 ```json
 {
@@ -51,6 +50,7 @@ Add this snippet to your `mcp_config.json` (for Claude Desktop or VS Code):
       "command": "docker",
       "args": [
         "run", "--rm", "-i",
+        "-v", "/Users/yourname/Documents/TypstProjects:/app",
         "ghcr.io/vvijayaragupathy-uno/typst-mcpserver:main"
       ]
     }
@@ -58,18 +58,38 @@ Add this snippet to your `mcp_config.json` (for Claude Desktop or VS Code):
 }
 ```
 
-### Local Build
+> [!TIP]
+> **Easy Mode**: Create a default project folder at `~/Documents/TypstProjects` and update the path above with your Mac username.
+
+> [!IMPORTANT]
+> **Why the `-v` (Volume Mount) is required:**
+> Docker containers are isolated. Without this "bridge" from your Mac to `/app` inside the container, the AI cannot see or compile your local files.
+
+### 2. Verify Connection
+Run this in your terminal to ensure the server is responding correctly:
 
 ```bash
-docker build -t typst-mcp-server .
-docker run -i --rm typst-mcp-server
+echo '{"jsonrpc": "2.0", "id": 1, "method": "initialize", "params": {"protocolVersion": "2024-11-05", "capabilities": {}, "clientInfo": {"name": "test-client", "version": "1.0.0"}}}' | docker run --rm -i ghcr.io/vvijayaragupathy-uno/typst-mcpserver:main
 ```
 
 ---
 
-## 🛠 Local Setup (Python)
+## 🛠 Available Tools
 
-If you prefer to run the server locally:
+Once installed, your AI agent can use these powerful tools:
+
+- `create_document`: Start a new `.typ` file (optionally from a template).
+- `compile_document`: Turn your `.typ` source into a PDF, PNG, or SVG.
+- `list_templates`: Browse built-in templates (CV, Resume, Poster, Paper, etc.).
+- `list_fonts`: Check available system fonts for styling.
+- `edit_section`: Update specific parts of a document marked with section tags.
+- `query_metadata`: Extract data from Typst files for analysis.
+
+---
+
+## 🐍 Native Setup (Optional)
+
+If you prefer to run the server without Docker:
 
 1. **Install Typst CLI**: [typst.app/docs/cli](https://typst.app/docs/cli/)
 2. **Install Dependencies**:
@@ -80,6 +100,5 @@ If you prefer to run the server locally:
    ```bash
    python3 server.py
    ```
-
 
 ⚖️ **License**: MIT
